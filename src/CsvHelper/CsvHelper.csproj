@@ -25,7 +25,7 @@
 		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
 
 		<!-- NuGet -->
-		<PackageId>CsvHelper</PackageId>
+		<PackageId>CsvHelper.NS</PackageId>
 		<PackageTags>csv;csvhelper;comma;separated;value;delimited</PackageTags>
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageIconUrl>https://raw.github.com/JoshClose/CsvHelper/master/logo/Comma-Small.png</PackageIconUrl>
@@ -39,6 +39,7 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Version>33.0.2-ns2</Version>
 	</PropertyGroup>
 	
 	<ItemGroup>

@@ -193,7 +193,7 @@ public abstract class ClassMap
 	}
 
 	/// <summary>
-	/// Auto maps all members for the given type. If a member 
+	/// Auto maps all members for the given type. If a member
 	/// is mapped again it will override the existing map.
 	/// </summary>
 	/// <param name="configuration">The configuration.</param>
@@ -203,7 +203,7 @@ public abstract class ClassMap
 	}
 
 	/// <summary>
-	/// Auto maps all members for the given type. If a member 
+	/// Auto maps all members for the given type. If a member
 	/// is mapped again it will override the existing map.
 	/// </summary>
 	/// <param name="context">The context.</param>
@@ -321,7 +321,7 @@ public abstract class ClassMap
 				{
 					// Multiple properties could have the same name if a child class property
 					// is hiding a parent class property by using `new`. It's possible that
-					// the order of the properties returned 
+					// the order of the properties returned
 					continue;
 				}
 
@@ -342,7 +342,7 @@ public abstract class ClassMap
 				{
 					// Multiple fields could have the same name if a child class field
 					// is hiding a parent class field by using `new`. It's possible that
-					// the order of the fields returned 
+					// the order of the fields returned
 					continue;
 				}
 
@@ -357,7 +357,7 @@ public abstract class ClassMap
 
 		foreach (var member in members)
 		{
-			if (member.GetCustomAttribute<IgnoreAttribute>() != null)
+			if (member.GetCustomAttribute<IgnoreAttribute>()?.Sure ?? false)
 			{
 				// Ignore this member including its tree if it's a reference.
 				continue;
@@ -459,7 +459,7 @@ public abstract class ClassMap
 		{
 			var parameterMap = new ParameterMap(parameter);
 
-			if (parameter.GetCustomAttributes<IgnoreAttribute>(true).Any() || parameter.GetCustomAttributes<ConstantAttribute>(true).Any())
+			if ((parameter.GetCustomAttributes<IgnoreAttribute>(true).All(x=>x.Sure)) || parameter.GetCustomAttributes<ConstantAttribute>(true).Any())
 			{
 				// If there is an IgnoreAttribute or ConstantAttribute, we still need to add a map because a constructor requires
 				// all parameters to be present. A default value will be used later on.
