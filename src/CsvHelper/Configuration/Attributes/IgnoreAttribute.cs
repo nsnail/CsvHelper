@@ -14,10 +14,17 @@ namespace CsvHelper.Configuration.Attributes;
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false, Inherited = true)]
 public class IgnoreAttribute : Attribute, IMemberMapper, IMemberReferenceMapper, IParameterMapper
 {
+	public bool Sure { get; }
+
+	public IgnoreAttribute(bool sure = true)
+	{
+		Sure = sure;
+	}
+
 	/// <inheritdoc />
 	public void ApplyTo(MemberMap memberMap)
 	{
-		memberMap.Data.Ignore = true;
+		memberMap.Data.Ignore = Sure;
 	}
 
 	/// <inheritdoc />
@@ -32,6 +39,6 @@ public class IgnoreAttribute : Attribute, IMemberMapper, IMemberReferenceMapper,
 	/// <inheritdoc />
 	public void ApplyTo(ParameterMap parameterMap)
 	{
-		parameterMap.Data.Ignore = true;
+		parameterMap.Data.Ignore = Sure;
 	}
 }

@@ -25,7 +25,7 @@
 		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
 
 		<!-- NuGet -->
-		<PackageId>CsvHelper</PackageId>
+		<PackageId>NetAdmin.CsvHelper</PackageId>
 		<PackageTags>csv;csvhelper;comma;separated;value;delimited</PackageTags>
 		<PackageIcon>Icon.png</PackageIcon>
 		<PackageIconUrl>https://raw.github.com/JoshClose/CsvHelper/master/logo/Comma-Small.png</PackageIconUrl>

@@ -357,7 +357,7 @@ public abstract class ClassMap
 
 		foreach (var member in members)
 		{
-			if (Attribute.IsDefined(member, typeof(IgnoreAttribute)))
+			if (member.GetCustomAttribute<IgnoreAttribute>()?.Sure ?? false)
 			{
 				// Ignore this member including its tree if it's a reference.
 				continue;
@@ -459,7 +459,7 @@ public abstract class ClassMap
 		{
 			var parameterMap = new ParameterMap(parameter);
 
-			if (Attribute.IsDefined(parameter, typeof(IgnoreAttribute), true) || Attribute.IsDefined(parameter, typeof(ConstantAttribute), true))
+			if ((parameter.GetCustomAttributes<IgnoreAttribute>(true).All(x=>x.Sure)) || parameter.GetCustomAttributes<ConstantAttribute>(true).Any())
 			{
 				// If there is an IgnoreAttribute or ConstantAttribute, we still need to add a map because a constructor requires
 				// all parameters to be present. A default value will be used later on.
